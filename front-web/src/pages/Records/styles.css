@@ -1,62 +1,105 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import "./styles.css";
-import { RecordsResponse } from './types';
-import { formatDate } from './helpers';
-import Pagination from './Pagination';
-import Filters from '../../components/Filters'
-
-const BASE_URL = "http://localhost:8080";
-
-const Records = () => {
-    const [recordsResponse, setRecordsResponse] = useState<RecordsResponse>();
-    const [activePage, setActivePage] = useState(0);
-
-    useEffect(() => {
-        axios.get(`${BASE_URL}/records?linesPerPage=12&page=${activePage}`)
-            .then(response => setRecordsResponse(response.data));
-
-    }, [activePage]);
-
-    const hanldePageChange = (index: number) => {
-        setActivePage(index)
-    }
-
-    return (
-        <div className="page-container">
-            <Filters link="/charts" linkText="VER GRÁFICOS"/>
-            <table className="records-table" cellPadding="0" cellSpacing="0">
-                <thead>
-                    <tr>
-                        <th>INSTANTE</th>
-                        <th>NOME</th>
-                        <th>IDADE</th>
-                        <th>PLATAFORMA</th>
-                        <th>GÊNERO</th>
-                        <th>TITULO DO GAME</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {recordsResponse?.content.map(record => (
-                    <tr key={record.id}>
-                        <td>{formatDate(record.moment)}</td>
-                        <td>{record.name}</td>
-                        <td>{record.age}</td>
-                        <td className="text-secundary">{record.gamePlatform}</td>
-                        <td>{record.genreName}</td>
-                        <td className="text-primary">{record.gameTitle}</td>                    
-                    </tr>
-                    ))}
-                </tbody>
-            </table>
-            <Pagination
-                activePage = {activePage}
-                goToPage = {hanldePageChange}
-                totalPages = {recordsResponse?.totalPages}
-            
-            />
-        </div>
-    );
+.page-container {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  padding-top: 50px;
 }
 
-export default Records;
+.filters-container.records-actions {
+  justify-content: flex-end;
+}
+ 
+.records-table {
+  width: 100%;
+  border-bottom: 10px solid var(--color-turquoise);
+  border-radius: 0 0 10px 10px;
+}
+
+.records-table thead {
+  background-color: var(--color-turquoise);
+  text-align: left;
+  color: #0E1B28;
+  border-radius: 10px;
+}
+
+.records-table thead tr {
+  height: 50px;
+}
+
+.records-table thead th:first-child {
+  padding-left: 50px;
+  border-top-left-radius: 10px;
+}
+
+.records-table thead th:last-child {
+  border-top-right-radius: 10px;
+}
+
+.records-table tbody td:first-child {
+  padding-left: 50px;
+}
+
+.records-table tbody tr {
+  height: 45px;
+  color: #FFF;
+  font-size: 18px;
+}
+
+.records-table tbody tr:nth-child(odd) {
+  background-color: var(--color-darkslategray);
+}
+
+.records-table tbody tr:nth-child(even) {
+  background-color: var(--color-dimgray);
+}
+
+.filters-container {
+  background-color: var(--color-darkslategray);
+  display: flex;
+  justify-content: space-between;
+  padding: 13px 15px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+}
+
+.filters-container input {
+  height: 44px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #9E9E9E;
+  border: 1px solid #E1E1E1;
+  border-radius: 10px;
+  box-sizing: border-box;
+  margin-right: 20px;
+  padding-left: 15px;
+}
+
+.filters-container input:focus {
+  outline: none;
+}
+
+.filters-container button {
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 10px;
+  padding: 13px 60px;
+}
+
+.filters-container .clean-filters {
+  background-color: var(--color-coral);
+  color: #FFF;
+  margin-left: 20px;
+}
+
+.filters-container .clean-filters:hover {
+  background-color: #e07243;
+}
+
+.filters-container .action-filters {
+  background-color: var(--color-turquoise);
+  color: #0E1B28;
+}
+
+.filters-container .action-filters:hover {
+  background-color: #04c7ef;
+}
