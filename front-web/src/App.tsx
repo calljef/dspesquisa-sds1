@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
+import Routes from './Routes';
 
 function App() {
   return (
-    <h1>
-      Semana DevSuperior
-    </h1>
+    <Routes/>
   );
 }
 
 export default App;
+
