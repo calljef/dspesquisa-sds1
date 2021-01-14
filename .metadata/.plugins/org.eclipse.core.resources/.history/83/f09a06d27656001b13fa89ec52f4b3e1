@@ -52,7 +52,6 @@ public class RecordResource {
 		
 		Page<RecordDTO> list = service.findByMoments(minDate, maxDate, pageRequest);
 		return ResponseEntity.ok().body(list);
-		
 	}
 }
 
