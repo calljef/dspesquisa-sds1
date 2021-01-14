@@ -1,0 +1,2 @@
+INDEX VERSION 1.131+C:\full-stack-dev\Semana DevSuperior\ws-sds1\dspesquisa\.metadata\.plugins\org.eclipse.jdt.core
+3581409272.index
