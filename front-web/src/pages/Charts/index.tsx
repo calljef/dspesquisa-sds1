@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './styles.css';
 import Filters from '../../components/Filters';
 import { barOptions, pieOptions } from './chart-options';
@@ -26,25 +26,24 @@ const BASE_URL = 'http://localhost:8080';
 const Charts = () => {
   const [barChartData, setBarChartData] = useState<BarChartData[]>([]);
   const [platformData, setPlatformData] = useState<PieChartData>(initialPieData);
-  const [gendertData, setGenderData] = useState<PieChartData>(initialPieData);
+  const [genderData, setGenderData] = useState<PieChartData>(initialPieData);
 
   useEffect(() => {
     async function getData() {
       const recordsResponse = await axios.get(`${BASE_URL}/records`);
       const gamesResponse = await axios.get(`${BASE_URL}/games`);
-
+      
       const barData = buildBarSeries(gamesResponse.data, recordsResponse.data.content);
       setBarChartData(barData);
-      console.log(barData);
+      console.log(recordsResponse.data.content)
 
       const platformChartData = getPlatformChartData(recordsResponse.data.content);
       setPlatformData(platformChartData);
-      console.log(platformChartData);
+      
 
       const genderChartData = getGenderChartData(recordsResponse.data.content);
       setGenderData(genderChartData);
-      console.log(genderChartData);
-
+      
     }
 
     getData();
@@ -81,9 +80,9 @@ const Charts = () => {
           <div className="gender-chart">
             <h2 className="chart-title">Gêneros</h2>
             <Chart
-              options={{ ...pieOptions, labels: gendertData?.labels }}
+              options={{ ...pieOptions, labels: genderData?.labels }}
               type="donut"
-              series={gendertData?.series}
+              series={genderData?.series}
               width="350"
             />
           </div>
