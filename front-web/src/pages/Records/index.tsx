@@ -6,14 +6,14 @@ import { formatDate } from './helpers';
 import Pagination from './Pagination';
 import Filters from '../../components/Filters'
 
-const BASE_URL = "https://sds1-jeferson.herokuapp.com";
+const API_URL = process.env.REACT_APP_API_URL;
 
 const Records = () => {
     const [recordsResponse, setRecordsResponse] = useState<RecordsResponse>();
     const [activePage, setActivePage] = useState(0);
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/records?linesPerPage=12&page=${activePage}`)
+        axios.get(`${API_URL}/records?linesPerPage=12&page=${activePage}`)
             .then(response => setRecordsResponse(response.data));
 
     }, [activePage]);

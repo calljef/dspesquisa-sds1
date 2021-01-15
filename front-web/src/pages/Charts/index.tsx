@@ -21,7 +21,7 @@ const initialPieData = {
   series: []
 }
 
-const BASE_URL = 'https://sds1-jeferson.herokuapp.com';
+const API_URL = process.env.REACT_APP_API_URL;
 
 const Charts = () => {
   const [barChartData, setBarChartData] = useState<BarChartData[]>([]);
@@ -30,8 +30,8 @@ const Charts = () => {
 
   useEffect(() => {
     async function getData() {
-      const recordsResponse = await axios.get(`${BASE_URL}/records`);
-      const gamesResponse = await axios.get(`${BASE_URL}/games`);
+      const recordsResponse = await axios.get(`${API_URL}/records`);
+      const gamesResponse = await axios.get(`${API_URL}/games`);
       
       const barData = buildBarSeries(gamesResponse.data, recordsResponse.data.content);
       setBarChartData(barData);
