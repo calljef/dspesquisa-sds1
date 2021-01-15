@@ -70,12 +70,12 @@ public class RecordDTO implements Serializable{
 		this.gameTitle = gameTitle;
 	}
 
-	public Platform getGamePlatform() {
+	public Platform getPlatform() {
 		return gamePlatform;
 	}
 
-	public void setGamePlatform(Platform gamePlatform) {
-		this.gamePlatform = gamePlatform;
+	public void setPlatform(Platform platform) {
+		this.gamePlatform = platform;
 	}
 
 	public String getGenreName() {

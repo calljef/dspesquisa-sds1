@@ -21,7 +21,7 @@ const initialPieData = {
   series: []
 }
 
-const BASE_URL = 'http://localhost:8080';
+const BASE_URL = 'https://sds1-jeferson.herokuapp.com';
 
 const Charts = () => {
   const [barChartData, setBarChartData] = useState<BarChartData[]>([]);
@@ -35,15 +35,12 @@ const Charts = () => {
       
       const barData = buildBarSeries(gamesResponse.data, recordsResponse.data.content);
       setBarChartData(barData);
-      console.log(recordsResponse.data.content)
 
       const platformChartData = getPlatformChartData(recordsResponse.data.content);
-      setPlatformData(platformChartData);
-      
+      setPlatformData(platformChartData);      
 
       const genderChartData = getGenderChartData(recordsResponse.data.content);
-      setGenderData(genderChartData);
-      
+      setGenderData(genderChartData);      
     }
 
     getData();
