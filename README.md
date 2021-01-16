@@ -31,9 +31,9 @@ A Semana DevSuperior  é uma hands-on online com muito conteúdo prático, todo 
 
 ## 🚀 Demonstração da aplicação
 
-<a target="_blank" href="https://sds2-jeferson.netlify.app/">
- <img src="./assets/netlify.svg" width="100px; alt="Netlify"/>
- <img src="./assets/heroku-icon.svg" width="100px; alt="Heroku"/> 							    						    
+<a target="_blank" href="https://sds1-jeferson.netlify.app/">
+ <img src="./assets/netlify.svg" width="100px"; alt="Netlify"/>
+ <img src="./assets/heroku-icon.svg" width="100px"; alt="Heroku"/> 							    						    
 </a>
 
 ---
