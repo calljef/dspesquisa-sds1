@@ -51,9 +51,9 @@ A Semana DevSuperior  é uma hands-on online com muito conteúdo prático, todo 
 O layout da aplicação
 
 ### Figma
-<a href="https://www.figma.com/file/AE96dXBqHTLIWI0wU340Px/DSPesquisa?node-id=0%3A1" target="_blank"> 
+<a href="https://www.figma.com/file/AE96dXBqHTLIWI0wU340Px/DSPesquisa?node-id=0%3A1"> 
   <p align="center">
-    <img alt="figma image" title="#figma Image" src="./assets/figma.png" width="100px">
+    <img alt="figma image" title="#figma Image" src="./assets/figma.png">
   </p>
 </a>
 
